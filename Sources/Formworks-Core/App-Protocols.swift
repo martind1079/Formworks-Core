@@ -23,7 +23,7 @@ public struct MenuSectionItem: Identifiable {
 public struct Menu {
     let sections: [MenuSection]
     
-    static func testMenu() -> Menu {
+    public static func testMenu() -> Menu {
         let templatesItem = MenuSectionItem(title: "Templates")
         let templatesSection = MenuSection(title: "Templates", items: [templatesItem])
         let inProgressItem = MenuSectionItem(title: "In Progress")
@@ -58,12 +58,12 @@ public protocol FormDataLoader {
     func loadForms()
 }
 
-class FWDatabase: FormDataLoader {
+public class FWDatabase: FormDataLoader {
     @Published var currentForms = [FormData]()
-    func observeFormData() -> AnyPublisher<[FormData], Never> {
+    public func observeFormData() -> AnyPublisher<[FormData], Never> {
         $currentForms.eraseToAnyPublisher()
     }
-    func loadForms() {
+    public func loadForms() {
         currentForms = MockData.forms
     }
 }
@@ -87,7 +87,7 @@ public class FormRepository {
 
 public class Session {
     let user: User
-    var formManager: FormManager?
+    public var formManager: FormManager?
     
     public func setManager(_ manager: FormManager) {
         self.formManager = manager
@@ -98,4 +98,8 @@ public class Session {
     }
 }
 
-public class User { }
+public class User {
+    public init() {
+        
+    }
+}

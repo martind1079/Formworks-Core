@@ -8,16 +8,16 @@
 import Foundation
 import SwiftUI
 
-struct AlertItem: Identifiable {
-    let id = UUID()
+public struct AlertItem: Identifiable {
+    public let id = UUID()
     let title: String
     let message: String
     let buttonItems: [ButtonItem]
 }
 
-struct ButtonItem: Identifiable {
+public struct ButtonItem: Identifiable {
     
-    let id = UUID()
+    public let id = UUID()
     
     var title: String
     var action: () -> Void
