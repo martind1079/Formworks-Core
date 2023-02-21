@@ -7,8 +7,8 @@
 
 import Foundation
 
-class FormElement: Identifiable {
-    let id = UUID()
+public class FormElement: Identifiable {
+    public let id = UUID()
     var name: String = ""
     var elementName: String = ""
     var type: FormElementType = .form
@@ -96,7 +96,7 @@ class FormElement: Identifiable {
     }
     var message: String = ""
 
-    required init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.title = try container.decodeProperty(String.self, forKey: .title) ?? ""
@@ -139,13 +139,13 @@ class FormElement: Identifiable {
 
 
 extension FormElement: Equatable {
-    static func == (lhs: FormElement, rhs: FormElement) -> Bool {
+    public static func == (lhs: FormElement, rhs: FormElement) -> Bool {
         lhs.name == rhs.name
     }
 }
 
 extension FormElement: Hashable {
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(name)
     }
 }

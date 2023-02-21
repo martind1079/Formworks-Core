@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-class FormManager: ObservableObject {
+public class FormManager: ObservableObject {
     let form: FWForm
     @Published var scrollOffset: CGPoint = .zero
     
@@ -18,13 +18,13 @@ class FormManager: ObservableObject {
     }
 }
 
-class FormLoader {
-    enum Result {
+public class FormLoader {
+    public enum Result {
         case success(form: FWForm)
         case failure
     }
     
-    func load(_ template: String, completion: @escaping (Result) -> Void) {
+    public func load(_ template: String, completion: @escaping (Result) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             
             guard let form = MockData.testForm else {
@@ -36,12 +36,12 @@ class FormLoader {
     }
 }
 
-class FormService: ObservableObject {
+public class FormService: ObservableObject {
     
     @Published var forms: [FormData] = []
     private var cancellables = Set<AnyCancellable>()
     
-    enum LoadingState {
+    public enum LoadingState {
         case waiting
         case loading
         case loaded
@@ -49,7 +49,7 @@ class FormService: ObservableObject {
     let loader: FormLoader
     let formReceiver: FormReceiver
     
-    init(loader: FormLoader, formReceiver: FormReceiver, formRepo: FormRepository) {
+    public init(loader: FormLoader, formReceiver: FormReceiver, formRepo: FormRepository) {
         self.loader = loader
         self.formReceiver = formReceiver
         formRepo.observeForms().sink { forms in
@@ -61,7 +61,7 @@ class FormService: ObservableObject {
     @Published var loadingState: LoadingState = .waiting
 
     
-    func loadTemplate(_ template: String) {
+    public func loadTemplate(_ template: String) {
         loadingState = .loading
         loader.load(template) { [weak self] result in
             switch result {

@@ -45,11 +45,11 @@ protocol MenuSelector {
     func didSelectItem(_ item: MenuSectionItem)
 }
 
-protocol FormReceiver {
+public protocol FormReceiver {
     func didSelectForm(_ form: FWForm)
 }
 
-protocol LoginReceiver {
+public protocol LoginReceiver {
     func didLogin(with user: User)
 }
 
@@ -68,7 +68,7 @@ class FWDatabase: FormDataLoader {
     }
 }
 
-class FormRepository {
+public class FormRepository {
     let dataLoader: FormDataLoader
     init(dataLoader: FormDataLoader) {
         self.dataLoader = dataLoader
@@ -85,7 +85,7 @@ class FormRepository {
     
 }
 
-class Session {
+public class Session {
     let user: User
     var formManager: FormManager?
     
@@ -98,4 +98,4 @@ class Session {
     }
 }
 
-class User { }
+public class User { }

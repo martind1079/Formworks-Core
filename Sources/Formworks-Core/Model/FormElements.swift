@@ -55,7 +55,7 @@ class FormSection: FormElement, FormworksCollection {
     }
 }
 
-class FWForm: FormElement, FormworksCollection {
+public class FWForm: FormElement, FormworksCollection {
     
     var formElements: [FormElement] = []
     var layout: ContainerLayout?
