@@ -8,9 +8,9 @@
 import Foundation
 
 public struct UserDetails {
-    let username: String
-    let loginDetails: [String: Any]
-    let authenticated: Bool
+    public let username: String
+    public let loginDetails: [String: Any]
+    public let authenticated: Bool
     
     public init(username: String, loginDetails: [String : Any], authenticated: Bool) {
         self.username = username
@@ -26,9 +26,9 @@ public enum LoginError: Error {
 }
 
 public struct LoginResponse {
-    let userDetails: UserDetails
-    let requirePin: Bool
-    let createPin: Bool
+    public let userDetails: UserDetails
+    public let requirePin: Bool
+    public let createPin: Bool
     
     public init(details: UserDetails, requirePin: Bool = false, createPin: Bool = false) {
         self.userDetails = details
