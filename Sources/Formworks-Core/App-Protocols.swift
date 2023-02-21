@@ -102,9 +102,3 @@ public class Session {
         self.user = user
     }
 }
-
-public class User {
-    public init() {
-        
-    }
-}
