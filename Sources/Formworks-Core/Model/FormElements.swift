@@ -24,7 +24,7 @@ public enum FormElementType: String {
 }
 
 public class SectionHeader: FormElement {
-    var titleHeight : CGFloat = 0
+    public var titleHeight : CGFloat = 0
 }
 
 public class FormSection: FormElement, FormworksCollection {

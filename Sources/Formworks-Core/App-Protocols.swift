@@ -34,7 +34,7 @@ public struct Menu {
 }
 
 public class MenuService: ObservableObject {
-    @Published var menu: Menu
+    @Published public var menu: Menu
     
     public init(menu: Menu) {
         self.menu = menu

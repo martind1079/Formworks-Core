@@ -7,21 +7,21 @@
 
 import Foundation
 
-class WorkflowService: ObservableObject {
+public class WorkflowService: ObservableObject {
     
-    enum Result {
+    public enum Result {
         case error(Error)
         case success
     }
     
-    enum WorkflowState {
+    public enum WorkflowState {
         case start
         case requiresData
         case processingAction
         case complete
     }
-    @Published var isShowingAlert = false
-    var alertItem: AlertItem? {
+    @Published public var isShowingAlert = false
+    public var alertItem: AlertItem? {
         didSet {
             isShowingAlert = true
         }
@@ -29,19 +29,19 @@ class WorkflowService: ObservableObject {
     
     
     
-    @Published var state: WorkflowState = .start
-    var actions: [WFActionItem] = [WFActionItem(title: "Action 1"), WFActionItem(title: "Action 2")]
+    @Published public var state: WorkflowState = .start
+    public var actions: [WFActionItem] = [WFActionItem(title: "Action 1"), WFActionItem(title: "Action 2")]
     
-    init(actions: [WFActionItem] = []) {
+    public init(actions: [WFActionItem] = []) {
        // self.actions = actions
     }
     
-    func alertForRequierdFields() {
+    public func alertForRequierdFields() {
         let okItem = ButtonItem(title: "OK", action: {})
         alertItem = AlertItem(title: "Warning", message: "Please enter all required fields.", buttonItems: [okItem])
     }
     
-    func actionRequested(form: FWForm, completion: @escaping (WorkflowService.Result) -> Void) {
+    public func actionRequested(form: FWForm, completion: @escaping (WorkflowService.Result) -> Void) {
         state = .processingAction
         form.validate { [weak self] isValid in
             if isValid {
