@@ -60,6 +60,11 @@ public protocol FormDataLoader {
 
 public class FWDatabase: FormDataLoader {
     @Published var currentForms = [FormData]()
+    
+    public init() {
+        
+    }
+    
     public func observeFormData() -> AnyPublisher<[FormData], Never> {
         $currentForms.eraseToAnyPublisher()
     }
