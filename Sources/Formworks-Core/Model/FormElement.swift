@@ -9,59 +9,59 @@ import Foundation
 
 public class FormElement: Identifiable {
     public let id = UUID()
-    var name: String = ""
-    var elementName: String = ""
-    var type: FormElementType = .form
-    var fontSize: CGFloat = 14
-    var title: String = ""
-    var elementSize: CGSize = .zero
-    var elementFrame: CGRect = .zero
-    var titleLabelFrame: CGRect = .zero
-    var contentFrame: CGRect = .zero
-    var contentWidth: CGFloat?
-    var absoluteContentFrame: CGRect = .zero// relative to the page
-    var relativeContentFrame: CGRect = .zero // relative to the section
-    var marginLeft: CGFloat
-    var marginTop: CGFloat
-    var marginRight: CGFloat
-    var marginBottom: CGFloat
-    var width: CGFloat
-    var contentHeight: CGFloat?
-    var labelOffset: CGFloat?
-    var isTabItem = false
-    var tabItemsIndex = 0
-    var animateView = false
-    var isHighlighted = false
-    var isCurrentFocussedElement = false
-    var colorString: String?
-    var textColorString: String? = "black"
-    var isFocussedElement = false
-    var required = false
-    var dScription = "A Subheading"
-    var assignSpaceForTitle = true
+    public var name: String = ""
+    public var elementName: String = ""
+    public var type: FormElementType = .form
+    public var fontSize: CGFloat = 14
+    public var title: String = ""
+    public var elementSize: CGSize = .zero
+    public var elementFrame: CGRect = .zero
+    public var titleLabelFrame: CGRect = .zero
+    public var contentFrame: CGRect = .zero
+    public var contentWidth: CGFloat?
+    public var absoluteContentFrame: CGRect = .zero// relative to the page
+    public var relativeContentFrame: CGRect = .zero // relative to the section
+    public var marginLeft: CGFloat
+    public var marginTop: CGFloat
+    public var marginRight: CGFloat
+    public var marginBottom: CGFloat
+    public var width: CGFloat
+    public var contentHeight: CGFloat?
+    public var labelOffset: CGFloat?
+    public var isTabItem = false
+    public var tabItemsIndex = 0
+    public var animateView = false
+    public var isHighlighted = false
+    public var isCurrentFocussedElement = false
+    public var colorString: String?
+    public var textColorString: String? = "black"
+    public var isFocussedElement = false
+    public var required = false
+    public var dScription = "A Subheading"
+    public var assignSpaceForTitle = true
     
-    var hasOnBlurScript: Bool {
+    public var hasOnBlurScript: Bool {
         false
     }
-    var hasOnFocusScript: Bool {
+    public var hasOnFocusScript: Bool {
         false
     }
     
-    var onUpdate: (() -> Void)?
+    public var onUpdate: (() -> Void)?
     
-    var enabled = true {
+    public var enabled = true {
         didSet {
             enabled ? onEnabled() : onDisabled()
         }
     }
-    var visible = true {
+    public var visible = true {
         didSet {
             visible ? onShow() : onHide()
         }
     }
-    var scripts: [String: Any]?
+    public var scripts: [String: Any]?
 
-    var value: Any? {
+    public var value: Any? {
         didSet {
             dataClock += 1
             onValueChange()
@@ -79,9 +79,9 @@ public class FormElement: Identifiable {
         return (self as? FWForm)
     }
 
-    var elementDescription = ""
+    public var elementDescription = ""
     var parent: FormElement?
-    var valid: Bool {
+    public var valid: Bool {
         var result = true
         if required && value == nil {
             result = false
@@ -94,7 +94,7 @@ public class FormElement: Identifiable {
         
         return result
     }
-    var message: String = ""
+    public var message: String = ""
 
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

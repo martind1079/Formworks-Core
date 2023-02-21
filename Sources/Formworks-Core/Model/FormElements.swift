@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FormElementType: String {
+public enum FormElementType: String {
     case text = "Text"
     case signature = "Signature"
     case time = "Time"
@@ -23,11 +23,11 @@ enum FormElementType: String {
     case label = "Label"
 }
 
-class SectionHeader: FormElement {
+public class SectionHeader: FormElement {
     var titleHeight : CGFloat = 0
 }
 
-class FormSection: FormElement, FormworksCollection {
+public class FormSection: FormElement, FormworksCollection {
     
     var children: [FormElement] = []
     

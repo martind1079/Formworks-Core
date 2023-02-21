@@ -10,15 +10,15 @@ import SwiftUI
 
 public struct AlertItem: Identifiable {
     public let id = UUID()
-    let title: String
-    let message: String
-    let buttonItems: [ButtonItem]
+    public let title: String
+    public let message: String
+    public let buttonItems: [ButtonItem]
 }
 
 public struct ButtonItem: Identifiable {
     
     public let id = UUID()
     
-    var title: String
-    var action: () -> Void
+    public var title: String
+    public var action: () -> Void
 }

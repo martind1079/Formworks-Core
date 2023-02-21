@@ -9,12 +9,12 @@ import Foundation
 
 class ContainerLayout{ }
 
-class FWTableCell { }
+public class FWTableCell { }
 
-class TableHeaders: FormElement { }
+public class TableHeaders: FormElement { }
 
-class FormTable: FormElement, FormworksCollection {
-    var formElements: [FormElement] = []
+public class FormTable: FormElement, FormworksCollection {
+    public var formElements: [FormElement] = []
     
     var layout: ContainerLayout?
     
