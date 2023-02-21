@@ -13,7 +13,7 @@ public class FormManager: ObservableObject {
     @Published var scrollOffset: CGPoint = .zero
     
     
-    init(form: FWForm) {
+    public init(form: FWForm) {
         self.form = form
     }
 }

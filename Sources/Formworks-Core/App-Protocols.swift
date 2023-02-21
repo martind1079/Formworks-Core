@@ -8,19 +8,19 @@
 import Combine
 import Foundation
 
-struct MenuSection: Identifiable {
-    let id = UUID()
+public struct MenuSection: Identifiable {
+    public let id = UUID()
     
     let title: String
     let items: [MenuSectionItem]
 }
 
-struct MenuSectionItem: Identifiable {
-    let id = UUID()
+public struct MenuSectionItem: Identifiable {
+    public let id = UUID()
     let title: String
 }
 
-struct Menu {
+public struct Menu {
     let sections: [MenuSection]
     
     static func testMenu() -> Menu {
@@ -33,15 +33,15 @@ struct Menu {
     }
 }
 
-class MenuService: ObservableObject {
+public class MenuService: ObservableObject {
     @Published var menu: Menu
     
-    init(menu: Menu) {
+    public init(menu: Menu) {
         self.menu = menu
     }
 }
 
-protocol MenuSelector {
+public protocol MenuSelector {
     func didSelectItem(_ item: MenuSectionItem)
 }
 
@@ -53,7 +53,7 @@ public protocol LoginReceiver {
     func didLogin(with user: User)
 }
 
-protocol FormDataLoader {
+public protocol FormDataLoader {
     func observeFormData() -> AnyPublisher<[FormData], Never>
     func loadForms()
 }
@@ -70,15 +70,15 @@ class FWDatabase: FormDataLoader {
 
 public class FormRepository {
     let dataLoader: FormDataLoader
-    init(dataLoader: FormDataLoader) {
+    public init(dataLoader: FormDataLoader) {
         self.dataLoader = dataLoader
     }
     
-    func observeForms() -> AnyPublisher<[FormData], Never> {
+    public func observeForms() -> AnyPublisher<[FormData], Never> {
         dataLoader.observeFormData()
     }
     
-    func load() {
+    public func load() {
         dataLoader.loadForms()
     }
     
@@ -89,11 +89,11 @@ public class Session {
     let user: User
     var formManager: FormManager?
     
-    func setManager(_ manager: FormManager) {
+    public func setManager(_ manager: FormManager) {
         self.formManager = manager
     }
     
-    init(user: User) {
+    public init(user: User) {
         self.user = user
     }
 }
