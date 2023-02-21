@@ -44,19 +44,19 @@ public struct FormData: Identifiable, Hashable {
         case sign
     }
 
-    var permitNumber: String
-    let creationDate: Date
-    let supervisor: String
-    let creator: String
+    public var permitNumber: String
+    public let creationDate: Date
+    public let supervisor: String
+    public let creator: String
     let currentStep: Step
 
-    static func new() -> FormData {
+    public static func new() -> FormData {
         FormData(permitNumber: "12345", creationDate: Date(), supervisor: "Martin", creator: "John", currentStep: .submission)
     }
 }
 
-struct WFActionItem: Identifiable {
-    let id = UUID()
+public struct WFActionItem: Identifiable {
+    public let id = UUID()
     var title: String
     var action: (() -> Void)?
 }

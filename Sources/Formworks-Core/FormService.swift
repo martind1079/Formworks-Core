@@ -38,7 +38,7 @@ public class FormLoader {
 
 public class FormService: ObservableObject {
     
-    @Published var forms: [FormData] = []
+    @Published public var forms: [FormData] = []
     private var cancellables = Set<AnyCancellable>()
     
     public enum LoadingState {
