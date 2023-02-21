@@ -50,7 +50,7 @@ public protocol FormReceiver {
 }
 
 public protocol LoginReceiver {
-    func didLogin(with user: User)
+    func didLogin(with response: LoginResponse)
 }
 
 public protocol FormDataLoader {
