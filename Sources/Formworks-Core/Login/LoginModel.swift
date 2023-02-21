@@ -11,6 +11,12 @@ public struct UserDetails {
     let username: String
     let loginDetails: [String: Any]
     let authenticated: Bool
+    
+    public init(username: String, loginDetails: [String : Any], authenticated: Bool) {
+        self.username = username
+        self.loginDetails = loginDetails
+        self.authenticated = authenticated
+    }
 }
 
 public enum LoginError: Error {
