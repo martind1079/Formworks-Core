@@ -100,7 +100,7 @@ public class FWForm: FormElement, FormworksCollection {
         false
     }
     
-    func hasNextTabbingElement(validating: Bool) -> Bool {
+    public func hasNextTabbingElement(validating: Bool) -> Bool {
         true
     }
 }
