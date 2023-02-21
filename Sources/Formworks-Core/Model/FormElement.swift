@@ -72,7 +72,7 @@ public class FormElement: Identifiable {
             parent?.dataClock += 1
         }
     }
-    var parentForm: FWForm? {
+    public var parentForm: FWForm? {
         if let parent = parent {
             return parent.parentForm
         }
@@ -80,7 +80,7 @@ public class FormElement: Identifiable {
     }
 
     public var elementDescription = ""
-    var parent: FormElement?
+    public var parent: FormElement?
     public var valid: Bool {
         var result = true
         if required && value == nil {

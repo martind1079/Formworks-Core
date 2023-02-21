@@ -321,8 +321,8 @@ class FormDate: FormElement {
     }
 }
 
-class Time: FormElement {
-    var textType: TextFieldType = .time
+public class Time: FormElement {
+    public var textType: TextFieldType = .time
 
     required init(from decoder: Decoder) throws {
         do {

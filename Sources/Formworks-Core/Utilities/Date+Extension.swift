@@ -8,14 +8,14 @@
 import Foundation
 
 public extension Date {
-    private static let shortDateFormatter: DateFormatter = {
+    static let shortDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
         return dateFormatter
     }()
 
-    var short: String {
+    public var short: String {
         Self.shortDateFormatter.string(from: self)
     }
 }

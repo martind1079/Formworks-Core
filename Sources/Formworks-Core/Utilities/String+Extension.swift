@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension String {
+public extension String {
     func asFormattedDecimalNumber(decimalPlaces: NSNumber?) -> String {
         guard self.isEmpty == false else { return self }
         var dp: NSNumber = 0
