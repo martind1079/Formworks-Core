@@ -105,7 +105,7 @@ public class FWForm: FormElement, FormworksCollection {
     }
 }
 
-class FormPage: FormElement, FormworksCollection {
+public class FormPage: FormElement, FormworksCollection {
     var formElements: [FormElement] = []
     
     var layout: ContainerLayout?
@@ -145,7 +145,7 @@ class FormPage: FormElement, FormworksCollection {
     }
 }
 
-class FormGroup: FormElement {
+public class FormGroup: FormElement {
     
     var model : [FormElement]?
     var titleHeight: CGFloat?
@@ -164,7 +164,7 @@ class FormGroup: FormElement {
     }
 }
 
-class FormLabel: FormElement {
+public class FormLabel: FormElement {
     required init(from decoder: Decoder) throws {
         do {
             let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -179,7 +179,7 @@ class FormLabel: FormElement {
     }
 }
 
-class Paragraph: FormElement {
+public class Paragraph: FormElement {
     var numberOfLines = 5
     var textType: TextFieldType = .paragraph
 
@@ -198,7 +198,7 @@ class Paragraph: FormElement {
     }
 }
 
-class SingleSelect: FormElement, SelectableElement {
+public class SingleSelect: FormElement, SelectableElement {
     var options: [[String: String]]?
 
     required init(from decoder: Decoder) throws {
@@ -217,7 +217,7 @@ class SingleSelect: FormElement, SelectableElement {
     }
 }
 
-class MultiSelect: FormElement, SelectableElement {
+public class MultiSelect: FormElement, SelectableElement {
     var options: [[String: String]]?
 
     required init(from decoder: Decoder) throws {
@@ -343,7 +343,7 @@ class Time: FormElement {
     }
 }
 
-enum TextFieldType {
+public enum TextFieldType {
     case text
     case number
     case email
@@ -352,9 +352,9 @@ enum TextFieldType {
     case paragraph
 }
 
-class FormTextField: FormElement {
+public class FormTextField: FormElement {
     
-    var textType: TextFieldType {
+    public var textType: TextFieldType {
         switch dataType {
         case .email:
             return .email
@@ -367,8 +367,8 @@ class FormTextField: FormElement {
         }
     }
 
-    var dataType: DataType = .text
-    var decimalPlaces: NSNumber?
+    public var dataType: DataType = .text
+    public var decimalPlaces: NSNumber?
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -388,7 +388,7 @@ class FormTextField: FormElement {
 }
 
 extension FormTextField {
-    enum DataType: String, CaseIterable {
+    public enum DataType: String, CaseIterable {
         case text = "Text"
         case email = "Email"
         case number = "Number"
@@ -403,7 +403,7 @@ extension FormTextField {
             return nil
         }
         
-        func formattedValue(newString: String, input: String, decimalPlaces: NSNumber?) -> String {
+        public func formattedValue(newString: String, input: String, decimalPlaces: NSNumber?) -> String {
             switch self {
             case .text:
                 return newString
@@ -419,7 +419,7 @@ extension FormTextField {
             }
         }
         
-        func characterInputIsValid(newString: String, range: NSRange, input: String) -> Bool {
+        public func characterInputIsValid(newString: String, range: NSRange, input: String) -> Bool {
             switch self {
             case .text:
                 return true
