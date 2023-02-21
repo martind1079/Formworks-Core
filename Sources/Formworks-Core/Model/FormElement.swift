@@ -164,7 +164,7 @@ extension FormElement: EventHandler {
     }
 }
 
-protocol FormworksCollection  {
+public protocol FormworksCollection  {
     
     // a collection may or may not have layoutItems yet, if we do have them, recycle the viewModels when updating a layout
     // important for avoiding asynchromous communication to removed viewModels that caused problems previously
@@ -180,7 +180,7 @@ protocol FormworksCollection  {
 }
 
 extension FormworksCollection {
-    func hasElement(element: FormElement) -> Bool {
+    public func hasElement(element: FormElement) -> Bool {
         guard children.isEmpty == false else { return false }
         for child in children {
             if let collection = child as? FormworksCollection, collection.hasElement(element: element) {

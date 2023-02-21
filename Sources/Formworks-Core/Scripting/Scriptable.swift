@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Scriptable {
+public protocol Scriptable {
     func runScript(scriptDetails: ScriptDetails, form: FWForm, completion: @escaping (ScriptUpdates) -> Void)
     func executeRaw (script: String)
 
@@ -24,25 +24,25 @@ extension Scriptable {
     }
 }
 
-class ScriptDetails {
-    var script: String
-    var eventName: String
-    var elementName: String
+public class ScriptDetails {
+    public var script: String
+    public var eventName: String
+    public var elementName: String
 
-    init(script: String, eventName: String, elementName: String) {
+    public init(script: String, eventName: String, elementName: String) {
         self.script = script
         self.eventName = eventName
         self.elementName = elementName
     }
 }
 
-class TestScriptManager: Scriptable {
-    var scriptUpdates: ScriptUpdates?
-    var completion: ((ScriptUpdates) -> Void)?
+public class TestScriptManager: Scriptable {
+    public var scriptUpdates: ScriptUpdates?
+    public var completion: ((ScriptUpdates) -> Void)?
 
-    var scriptCount: Int = 0
+    public var scriptCount: Int = 0
 
-    func runScript(
+    public func runScript(
         scriptDetails: ScriptDetails,
         form: FWForm,
         completion: @escaping (ScriptUpdates) -> Void) {
@@ -57,11 +57,11 @@ class TestScriptManager: Scriptable {
         } */
     }
 
-    func executeRaw(script: String) {
+    public func executeRaw(script: String) {
 
     }
 
-    func destroyObject() {
+    public func destroyObject() {
 
     }
 }

@@ -57,6 +57,6 @@ public struct FormData: Identifiable, Hashable {
 
 public struct WFActionItem: Identifiable {
     public let id = UUID()
-    var title: String
-    var action: (() -> Void)?
+    public var title: String
+    public var action: (() -> Void)?
 }

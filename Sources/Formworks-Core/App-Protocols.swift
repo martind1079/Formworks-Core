@@ -21,7 +21,7 @@ public struct MenuSectionItem: Identifiable {
 }
 
 public struct Menu {
-    let sections: [MenuSection]
+    public let sections: [MenuSection]
     
     public static func testMenu() -> Menu {
         let templatesItem = MenuSectionItem(title: "Templates")

@@ -29,17 +29,17 @@ public class SectionHeader: FormElement {
 
 public class FormSection: FormElement, FormworksCollection {
     
-    var children: [FormElement] = []
+    public var children: [FormElement] = []
     
-    var formElements: [FormElement] = []
+    public var formElements: [FormElement] = []
     
     var layout: ContainerLayout?
     
-    func getLayoutElements() -> [FormElement] {
+    public func getLayoutElements() -> [FormElement] {
         []
     }
     
-    func destroyCollection() {
+    public func destroyCollection() {
         
     }
     
@@ -57,25 +57,25 @@ public class FormSection: FormElement, FormworksCollection {
 
 public class FWForm: FormElement, FormworksCollection {
     
-    var formElements: [FormElement] = []
-    var layout: ContainerLayout?
-    var children: [FormElement] = []
-    var currentFocussedElement: FormElement?
-    var currentResponderElement: FormElement?
+    public var formElements: [FormElement] = []
+    public var layout: ContainerLayout?
+    public var children: [FormElement] = []
+    public var currentFocussedElement: FormElement?
+    public var currentResponderElement: FormElement?
     
-    func getLayoutElements() -> [FormElement] {
+    public func getLayoutElements() -> [FormElement] {
         children
     }
     
-    func destroyCollection() {
+    public func destroyCollection() {
         
     }
 
     
-    var scriptManager: Scriptable?
-    var audioClips: [String: Any]?
+    public var scriptManager: Scriptable?
+    public var audioClips: [String: Any]?
 
-    var firstPage: FormPage? {
+    public var firstPage: FormPage? {
         self.children.first as? FormPage
     }
 
@@ -90,13 +90,13 @@ public class FWForm: FormElement, FormworksCollection {
         }
     }
     
-    func validate(completion: @escaping (Bool) -> Void) {
+    public func validate(completion: @escaping (Bool) -> Void) {
         // run validation scripts here
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             completion(self.valid)
         }
     }
-    func hasPreviousTabbingElement(validating: Bool) -> Bool {
+    public func hasPreviousTabbingElement(validating: Bool) -> Bool {
         false
     }
     
@@ -106,17 +106,17 @@ public class FWForm: FormElement, FormworksCollection {
 }
 
 public class FormPage: FormElement, FormworksCollection {
-    var formElements: [FormElement] = []
+    public var formElements: [FormElement] = []
     
-    var layout: ContainerLayout?
+    public  var layout: ContainerLayout?
     
-    var children: [FormElement] = []
+    public var children: [FormElement] = []
     
-    func getLayoutElements() -> [FormElement] {
+    public func getLayoutElements() -> [FormElement] {
         children
     }
     
-    func destroyCollection() {
+    public func destroyCollection() {
         
     }
 

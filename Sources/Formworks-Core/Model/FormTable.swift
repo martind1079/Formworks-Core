@@ -7,24 +7,32 @@
 
 import Foundation
 
-class ContainerLayout{ }
+public class ContainerLayout{
+    public init() {
+        
+    }
+}
 
-public class FWTableCell { }
+public class FWTableCell {
+    public init() {
+        
+    }
+}
 
 public class TableHeaders: FormElement { }
 
 public class FormTable: FormElement, FormworksCollection {
     public var formElements: [FormElement] = []
     
-    var layout: ContainerLayout?
+    public var layout: ContainerLayout?
     
-    var children: [FormElement]
+    public var children: [FormElement]
     
-    func getLayoutElements() -> [FormElement] {
+    public func getLayoutElements() -> [FormElement] {
         return children
     }
     
-    func destroyCollection() {
+    public func destroyCollection() {
         
     }
     
