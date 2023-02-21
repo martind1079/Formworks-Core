@@ -24,6 +24,10 @@ public class FormLoader {
         case failure
     }
     
+    public init() {
+        
+    }
+    
     public func load(_ template: String, completion: @escaping (Result) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             

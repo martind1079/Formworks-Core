@@ -11,13 +11,13 @@ import Foundation
 public struct MenuSection: Identifiable {
     public let id = UUID()
     
-    let title: String
-    let items: [MenuSectionItem]
+    public let title: String
+    public let items: [MenuSectionItem]
 }
 
 public struct MenuSectionItem: Identifiable {
     public let id = UUID()
-    let title: String
+    public let title: String
 }
 
 public struct Menu {
