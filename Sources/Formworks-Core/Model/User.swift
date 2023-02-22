@@ -13,59 +13,62 @@ public protocol UserStore {
 }
 
 public class User {
-    var savePasswordActivated: Bool?
-    var savePasswordRefused: Bool?
-    let username: String
-    let loginDetails: [String: Any]
-    var isAuthenticated: Bool
-    var lastAlertId: String?
-    var lastMetaDataId: String?
-    var lastSyncId: String?
-    var cameraRollAccessSave = 0
-    var cameraRollAccessRead = 0
-    var lastFormId: String?
-    var lastLogin = 0
-    var lastConnected = 0
-    
+    var userDetails: UserDetails
+    public var isAuthenticated = false
     let userStore: UserStore
+    var loginDetails: [String: Any]
     
     public var confirmMessage: String? {
         loginDetails["confirm"] as? String
     }
     public var email: String {
-        username
+        userDetails.username
     }
     public var fullname: String {
-        loginDetails["name"] as? String ?? ""
+        userDetails.fullName
     }
     public var profileKey: String {
-        guard let customerId = loginDetails["customerid"] as? String,
-              let userId = loginDetails["userid"] as? String else { return "" }
-        
-        return customerId.appending("/\(userId)").appending("/Profile.json")
+        customerId.appending("/\(userDetails.userId)").appending("/Profile.json")
     }
     public var profile: String?
     
     public init(username: String, loginDetails: [String: Any], authenticated: Bool, userStore: UserStore) {
-        self.username = username
         self.loginDetails = loginDetails
         self.isAuthenticated = authenticated
         self.userStore = userStore
+        userDetails = UserDetails(username: username, loginDetails: loginDetails)
+        save()
     }
     
-    public func save() {
+    public func setLoginDetails(details: [String: Any]) {
+        loginDetails = details
+        userDetails.update(loginDetails: details)
+        save()
+    }
+    
+    public func savePasswordRefused() {
+        userDetails.savePasswordRefused = false
+        save()
+    }
+    
+    public func savePasswordAccepted() {
+        userDetails.savePasswordActivated = true
+        save()
+    }
+    
+    private func save() {
         userStore.save(user: self)
     }
     
     public func canSavePassword() -> Bool {
-        true
+        userDetails.savePasswordAllowed && userDetails.savePasswordRefused == false && userDetails.savePasswordActivated == false
     }
     
-    public func clientId() -> String {
-        return loginDetails["clientid"] as! String
+    public var clientId: String {
+        userDetails.clientId
     }
     
-    public func customerId() -> String {
-        return loginDetails["customerid"] as! String
+    public var customerId: String {
+        userDetails.customerId
     }
 }

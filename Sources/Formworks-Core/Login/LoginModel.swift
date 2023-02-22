@@ -7,14 +7,14 @@
 
 import Foundation
 
-public struct UserDetails {
+public struct LoginDetails {
     public let username: String
-    public let loginDetails: [String: Any]
+    public let userDetails: [String: Any]
     public let authenticated: Bool
     
-    public init(username: String, loginDetails: [String : Any], authenticated: Bool) {
+    public init(username: String, userDetails: [String : Any], authenticated: Bool) {
         self.username = username
-        self.loginDetails = loginDetails
+        self.userDetails = userDetails
         self.authenticated = authenticated
     }
 }
@@ -26,12 +26,12 @@ public enum LoginError: Error {
 }
 
 public struct LoginResponse {
-    public let userDetails: UserDetails
+    public let loginDetails: LoginDetails
     public let requirePin: Bool
     public let createPin: Bool
     
-    public init(details: UserDetails, requirePin: Bool = false, createPin: Bool = false) {
-        self.userDetails = details
+    public init(loginDetails: LoginDetails, requirePin: Bool = false, createPin: Bool = false) {
+        self.loginDetails = loginDetails
         self.requirePin = requirePin
         self.createPin = createPin
     }
