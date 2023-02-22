@@ -98,7 +98,7 @@ public struct UserDetails {
         } else {
             self.syncId = ""
         }
-        if let savePasswordAllowed = loginDetails["cansavepassword"] as? String {
+        if let savePasswordAllowed = loginDetails["cansavepassword"] as? NSString {
             self.savePasswordAllowed = savePasswordAllowed == "True" ? true : false
         } else {
             self.savePasswordAllowed = false
